@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_found_c.c                                       :+:      :+:    :+:   */
+/*   ft_found_u.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nabboud <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nabil <nabil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 14:12:38 by nabboud           #+#    #+#             */
-/*   Updated: 2023/12/07 17:07:09 by nabboud          ###   ########.fr       */
+/*   Created: 2023/12/07 14:16:55 by nabboud           #+#    #+#             */
+/*   Updated: 2023/12/10 11:54:46 by nabil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
-int	ft_found_c(int c)
+int	Udisplay_nbr(unsigned int n)
 {
 	int	i;
 
 	i = 0;
-	ft_putchar(c);
+	if (n >= 10)
+		i = Udisplay_nbr((n / 10));
+	write(1, &"0123456789"[n % 10], 1);
 	++i;
 	return (i);
+}
+
+int	ft_found_u(unsigned int n)
+{
+	return (Udisplay_nbr(n));
 }

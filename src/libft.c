@@ -1,34 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_found_u.c                                       :+:      :+:    :+:   */
+/*   libft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nabboud <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nabil <nabil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/07 14:16:55 by nabboud           #+#    #+#             */
-/*   Updated: 2023/12/07 17:12:19 by nabboud          ###   ########.fr       */
+/*   Created: 2023/12/05 14:16:28 by nabboud           #+#    #+#             */
+/*   Updated: 2023/12/10 11:54:29 by nabil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
-int	ft_found_u(unsigned int n)
-{
-	return (Udisplay_nbr(n));
-}
-
-int	Udisplay_nbr(unsigned int n)
+int	ft_putstr(char *str)
 {
 	int	i;
 
 	i = 0;
-	if (n >= 10)
-		i = Udisplay_nbr((n / 10));
-	write(1, &"0123456789"[n % 10], 1);
+	while (str[i])
+	{
+		write(1, str + i, 1);
+		++i;
+	}
+	return (i);
+}
+
+int	ft_putchar(int c)
+{
+	int	i;
+
+	i = 0;
+	write(1, &c, 1);
 	++i;
 	return (i);
 }

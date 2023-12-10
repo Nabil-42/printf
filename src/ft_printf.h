@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   printf.h                                           :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nabboud <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nabil <nabil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 17:34:16 by nabboud           #+#    #+#             */
-/*   Updated: 2023/12/07 17:12:03 by nabboud          ###   ########.fr       */
+/*   Updated: 2023/12/10 11:54:25 by nabil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <unistd.h>
 #include <stdarg.h>
 #include <stdio.h>
-#include "printf.h"
+#include "ft_printf.h"
 
 int	ft_printf(const char *format, ... );
 int	ft_putnbr(int s);

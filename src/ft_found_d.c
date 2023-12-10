@@ -1,53 +1,62 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_found_x.c                                       :+:      :+:    :+:   */
+/*   ft_found_d.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nabboud <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: nabil <nabil@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/05 17:21:32 by nabboud           #+#    #+#             */
-/*   Updated: 2023/12/07 17:11:21 by nabboud          ###   ########.fr       */
+/*   Created: 2023/12/04 17:27:56 by nabboud           #+#    #+#             */
+/*   Updated: 2023/12/10 11:54:57 by nabil            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 #include <stdarg.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 
-int	ft_found_x(unsigned int n)
+int	display_nbr(int n)
 {
 	int	i;
-	char	str[] = "0123456789abcdef";
-	
+
 	i = 0;
-	if (n / 16)
+	if (n >= 10)
+	{	
+		i += display_nbr((n / 10));
+
+	}
+	
+	write(1, &"0123456789"[n % 10], 1);
+
+	return (++i);
+}
+
+int	ft_putnbr(int n)
+{
+	int	i;
+
+	i = 0;
+	if (n == -2147483648)
 	{
-		i = ft_found_x(n / 16);
-		i = ft_found_x(n % 16);
+		write(1, "-2147483648", 11);
+		i += 11;
+		return (i);
 	}
-	else {
-		write(1, str+(n), 1);
+	if (n < 0)
+	{
+		write(1, "-", 1);
 		++i;
+		n *= -1;
 	}
+	 i += display_nbr(n);
 	return (i);
 }
 
-int	ft_found_X(unsigned int n)
+int	ft_found_d(int s)
 {
-	int	i;
-	char	str[] = "0123456789ABCDEF";
-	
-	i = 0;
-	if (n / 16)
-	{
-		i = ft_found_X(n / 16);
-		i = ft_found_X(n % 16);
-	}
-	else {
-		write(1, str+(n), 1);
-		++i;
-	}
+	int		i;
+
+	i = ft_putnbr(s);	
 	return (i);
 }
